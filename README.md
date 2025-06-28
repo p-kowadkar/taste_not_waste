@@ -1,1 +1,0 @@
-taste_not_waste

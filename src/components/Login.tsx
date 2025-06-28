@@ -32,36 +32,13 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
     }
   };
 
-  const useDemoCredentials = async (userType: 'admin' | 'student') => {
-    setIsLoading(true);
-    setError('');
-    
-    try {
-      let demoEmail = '';
-      let demoPassword = 'demo2024';
-      
-      if (userType === 'admin') {
-        demoEmail = 'admin@tastenotwaste.demo';
-      } else {
-        demoEmail = 'student@tastenotwaste.demo';
-      }
-      
-      // Set the form fields
-      setEmail(demoEmail);
-      setPassword(demoPassword);
-      
-      // Automatically log in with demo credentials
-      const user = await authService.login(demoEmail, demoPassword);
-      if (user) {
-        onLogin(user);
-      } else {
-        setError('Demo login failed. Please try again! 😊');
-      }
-    } catch (err) {
-      setError('Demo login failed. Please try again! 🌟');
-      console.error('Demo login error:', err);
-    } finally {
-      setIsLoading(false);
+  const useDemoCredentials = (userType: 'admin' | 'student') => {
+    if (userType === 'admin') {
+      setEmail('admin@myplatenyc.demo');
+      setPassword('demo2024');
+    } else {
+      setEmail('student@myplatenyc.demo');
+      setPassword('demo2024');
     }
   };
 
@@ -92,12 +69,12 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="text-center mb-8">
             <div className="relative inline-block">
               {/* Main emoji character */}
-              <div 
-                className="w-24 h-24 mx-auto mb-4 animate-bounce hover:scale-110 transition-transform cursor-pointer text-6xl flex items-center justify-center"
+              <img 
+                src="/src/assets/image.png" 
+                alt="Taste Not Waste Mascot" 
+                className="w-24 h-24 mx-auto mb-4 animate-bounce hover:scale-110 transition-transform cursor-pointer"
                 onClick={() => setShowWelcome(!showWelcome)}
-              >
-                🌱
-              </div>
+              />
               {/* Sparkle effects around the mascot */}
               <div className="absolute -top-2 -right-2 text-2xl animate-pulse">✨</div>
               <div className="absolute -bottom-2 -left-2 text-2xl animate-pulse delay-500">⭐</div>
@@ -188,12 +165,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             
             <div className="space-y-3">
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  useDemoCredentials('admin');
-                }}
-                disabled={isLoading}
-                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl hover:scale-105 transition-all border-3 border-purple-300 hover:border-purple-400 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => useDemoCredentials('admin')}
+                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl hover:scale-105 transition-all border-3 border-purple-300 hover:border-purple-400 shadow-lg"
                 aria-label="Use admin demo credentials"
               >
                 <div className="flex items-center gap-4">
@@ -207,12 +180,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
               </button>
               
               <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  useDemoCredentials('student');
-                }}
-                disabled={isLoading}
-                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl hover:scale-105 transition-all border-3 border-green-300 hover:border-green-400 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => useDemoCredentials('student')}
+                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl hover:scale-105 transition-all border-3 border-green-300 hover:border-green-400 shadow-lg"
                 aria-label="Use student demo credentials"
               >
                 <div className="flex items-center gap-4">
