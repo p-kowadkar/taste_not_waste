@@ -44,40 +44,40 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-100 via-orange-50 to-pink-100 relative overflow-hidden">
-      {/* Floating background elements */}
+      {/* Floating background elements - animations removed */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 text-4xl animate-bounce opacity-60">🍎</div>
-        <div className="absolute top-20 right-20 text-3xl animate-pulse opacity-60">🥕</div>
-        <div className="absolute bottom-20 left-20 text-3xl animate-bounce delay-1000 opacity-60">🍌</div>
-        <div className="absolute bottom-10 right-10 text-4xl animate-pulse delay-500 opacity-60">🥗</div>
-        <div className="absolute top-1/2 left-5 text-2xl animate-bounce delay-700 opacity-60">🍇</div>
-        <div className="absolute top-1/3 right-5 text-2xl animate-pulse delay-300 opacity-60">🥪</div>
-        <div className="absolute top-1/4 left-1/4 text-2xl animate-bounce delay-200 opacity-40">⭐</div>
-        <div className="absolute bottom-1/4 right-1/4 text-2xl animate-pulse delay-800 opacity-40">🌟</div>
+        <div className="absolute top-10 left-10 text-4xl opacity-60">🍎</div>
+        <div className="absolute top-20 right-20 text-3xl opacity-60">🥕</div>
+        <div className="absolute bottom-20 left-20 text-3xl opacity-60">🍌</div>
+        <div className="absolute bottom-10 right-10 text-4xl opacity-60">🥗</div>
+        <div className="absolute top-1/2 left-5 text-2xl opacity-60">🍇</div>
+        <div className="absolute top-1/3 right-5 text-2xl opacity-60">🥪</div>
+        <div className="absolute top-1/4 left-1/4 text-2xl opacity-40">⭐</div>
+        <div className="absolute bottom-1/4 right-1/4 text-2xl opacity-40">🌟</div>
       </div>
 
       <div className="flex items-center justify-center min-h-screen p-4 relative z-10">
         <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md border-4 border-yellow-300 relative">
-          {/* Welcome message */}
+          {/* Welcome message - animation removed */}
           {showWelcome && (
-            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-white px-6 py-2 rounded-full text-sm font-bold animate-bounce border-2 border-white shadow-lg">
+            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-white px-6 py-2 rounded-full text-sm font-bold border-2 border-white shadow-lg">
               Welcome back, friend! 👋
             </div>
           )}
 
-          {/* Main logo and mascot */}
+          {/* Main logo and mascot - hover effects removed */}
           <div className="text-center mb-8">
             <div className="relative inline-block">
-              {/* Main emoji character */}
+              {/* Main emoji character - hover effects removed */}
               <img 
                 src="/src/assets/image.png" 
                 alt="Taste Not Waste Mascot" 
-                className="w-24 h-24 mx-auto mb-4 animate-bounce hover:scale-110 transition-transform cursor-pointer"
+                className="w-24 h-24 mx-auto mb-4 cursor-pointer"
                 onClick={() => setShowWelcome(!showWelcome)}
               />
-              {/* Sparkle effects around the mascot */}
-              <div className="absolute -top-2 -right-2 text-2xl animate-pulse">✨</div>
-              <div className="absolute -bottom-2 -left-2 text-2xl animate-pulse delay-500">⭐</div>
+              {/* Sparkle effects - animations removed */}
+              <div className="absolute -top-2 -right-2 text-2xl">✨</div>
+              <div className="absolute -bottom-2 -left-2 text-2xl">⭐</div>
             </div>
             
             <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent mb-2 font-comic">
@@ -87,9 +87,9 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
               Let's save food together! 🌍💚
             </p>
             <div className="flex justify-center gap-2 mt-2">
-              <Heart className="w-5 h-5 text-pink-500 animate-pulse" />
-              <Star className="w-5 h-5 text-yellow-500 animate-pulse delay-300" />
-              <Heart className="w-5 h-5 text-pink-500 animate-pulse delay-600" />
+              <Heart className="w-5 h-5 text-pink-500" />
+              <Star className="w-5 h-5 text-yellow-500" />
+              <Heart className="w-5 h-5 text-pink-500" />
             </div>
           </div>
 
@@ -99,12 +99,13 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 <Mail className="w-5 h-5 text-blue-500" />
                 Your Email Address
               </label>
+              {/* Input field - focus effects removed */}
               <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-4 text-lg border-3 border-gray-300 rounded-2xl focus:ring-4 focus:ring-blue-300 focus:border-blue-500 transition-all hover:border-blue-400 bg-blue-50"
+                className="w-full p-4 text-lg border-3 border-gray-300 rounded-2xl bg-blue-50 outline-none"
                 placeholder="Type your email here... 📧"
                 required
                 aria-describedby="email-help"
@@ -116,12 +117,13 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 <Lock className="w-5 h-5 text-green-500" />
                 Your Secret Password
               </label>
+              {/* Input field - focus effects removed */}
               <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-4 text-lg border-3 border-gray-300 rounded-2xl focus:ring-4 focus:ring-green-300 focus:border-green-500 transition-all hover:border-green-400 bg-green-50"
+                className="w-full p-4 text-lg border-3 border-gray-300 rounded-2xl bg-green-50 outline-none"
                 placeholder="Enter your password... 🔐"
                 required
                 aria-describedby="password-help"
@@ -135,10 +137,11 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
               </div>
             )}
 
+            {/* Login button - hover and focus effects removed */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-4 px-6 rounded-2xl text-xl font-bold hover:scale-105 focus:ring-4 focus:ring-green-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg border-2 border-white flex items-center justify-center gap-3"
+              className="w-full bg-gradient-to-r from-green-500 to-blue-500 text-white py-4 px-6 rounded-2xl text-xl font-bold disabled:opacity-50 disabled:cursor-not-allowed shadow-lg border-2 border-white flex items-center justify-center gap-3"
               aria-describedby="login-button-help"
             >
               {isLoading ? (
@@ -164,9 +167,10 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             </div>
             
             <div className="space-y-3">
+              {/* Demo buttons - hover effects removed */}
               <button
                 onClick={() => useDemoCredentials('admin')}
-                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl hover:scale-105 transition-all border-3 border-purple-300 hover:border-purple-400 shadow-lg"
+                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl border-3 border-purple-300 shadow-lg"
                 aria-label="Use admin demo credentials"
               >
                 <div className="flex items-center gap-4">
@@ -176,13 +180,13 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     <p className="text-sm text-purple-600">Manage menus and see reports</p>
                     <p className="text-xs text-purple-500 mt-1">📧 admin@tastenotwaste.demo</p>
                   </div>
-                  <div className="ml-auto text-2xl animate-pulse">⭐</div>
+                  <div className="ml-auto text-2xl">⭐</div>
                 </div>
               </button>
               
               <button
                 onClick={() => useDemoCredentials('student')}
-                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl hover:scale-105 transition-all border-3 border-green-300 hover:border-green-400 shadow-lg"
+                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl border-3 border-green-300 shadow-lg"
                 aria-label="Use student demo credentials"
               >
                 <div className="flex items-center gap-4">
@@ -192,7 +196,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     <p className="text-sm text-green-600">Pick meals and track your progress</p>
                     <p className="text-xs text-green-500 mt-1">📧 student@tastenotwaste.demo</p>
                   </div>
-                  <div className="ml-auto text-2xl animate-pulse">🌟</div>
+                  <div className="ml-auto text-2xl">🌟</div>
                 </div>
               </button>
             </div>
@@ -208,22 +212,22 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500 flex items-center justify-center gap-2">
               <span>Made with</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+              <Heart className="w-4 h-4 text-red-500" />
               <span>for kids who care about our planet!</span>
               <div className="text-lg">🌍</div>
             </p>
           </div>
 
-          {/* Floating helper */}
-          <div className="absolute -bottom-4 -right-4 bg-yellow-400 rounded-full p-3 shadow-xl border-3 border-white animate-bounce cursor-pointer hover:scale-110 transition-transform">
+          {/* Floating helper - hover effects removed */}
+          <div className="absolute -bottom-4 -right-4 bg-yellow-400 rounded-full p-3 shadow-xl border-3 border-white cursor-pointer">
             <div className="text-2xl">🤗</div>
           </div>
         </div>
       </div>
 
-      {/* Additional floating elements for more fun */}
-      <div className="fixed bottom-4 left-4 text-3xl animate-bounce opacity-70">🎈</div>
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 text-2xl animate-pulse opacity-60">🌈</div>
+      {/* Additional floating elements - animations removed */}
+      <div className="fixed bottom-4 left-4 text-3xl opacity-70">🎈</div>
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 text-2xl opacity-60">🌈</div>
     </div>
   );
 };
