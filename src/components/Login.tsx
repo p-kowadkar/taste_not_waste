@@ -34,10 +34,10 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   const useDemoCredentials = (userType: 'admin' | 'student') => {
     if (userType === 'admin') {
-      setEmail('admin@myplatenyc.demo');
+      setEmail('admin@tastenotwaste.demo');
       setPassword('demo2024');
     } else {
-      setEmail('student@myplatenyc.demo');
+      setEmail('student@tastenotwaste.demo');
       setPassword('demo2024');
     }
   };
@@ -174,6 +174,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <div>
                     <p className="text-lg font-bold text-purple-800">Teacher/Admin Mode</p>
                     <p className="text-sm text-purple-600">Manage menus and see reports</p>
+                    <p className="text-xs text-purple-500 mt-1">📧 admin@tastenotwaste.demo</p>
                   </div>
                   <div className="ml-auto text-2xl animate-pulse">⭐</div>
                 </div>
@@ -189,10 +190,17 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <div>
                     <p className="text-lg font-bold text-green-800">Student Mode</p>
                     <p className="text-sm text-green-600">Pick meals and track your progress</p>
+                    <p className="text-xs text-green-500 mt-1">📧 student@tastenotwaste.demo</p>
                   </div>
                   <div className="ml-auto text-2xl animate-pulse">🌟</div>
                 </div>
               </button>
+            </div>
+            
+            <div className="mt-4 p-3 bg-yellow-100 rounded-2xl border-2 border-yellow-300">
+              <p className="text-center text-sm font-bold text-yellow-800">
+                🔑 Password for both: <span className="font-mono">demo2024</span>
+              </p>
             </div>
           </div>
 
