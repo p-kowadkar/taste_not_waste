@@ -19,13 +19,17 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
     setError('');
 
     try {
+      console.log('🔄 Attempting login with:', email);
       const user = await authService.login(email, password);
       if (user) {
+        console.log('✅ Login successful, calling onLogin');
         onLogin(user);
       } else {
+        console.log('❌ Login failed - invalid credentials');
         setError('Oops! Those details don\'t match. Try the demo buttons below! 😊');
       }
     } catch (err) {
+      console.error('❌ Login error:', err);
       setError('Something went wrong. Let\'s try again! 🌟');
     } finally {
       setIsLoading(false);
@@ -33,12 +37,38 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   const useDemoCredentials = (userType: 'admin' | 'student') => {
+    console.log('🎮 Using demo credentials for:', userType);
     if (userType === 'admin') {
       setEmail('admin@tastenotwaste.demo');
       setPassword('demo2024');
     } else {
       setEmail('student@tastenotwaste.demo');
       setPassword('demo2024');
+    }
+    setError(''); // Clear any existing errors
+  };
+
+  const handleDemoLogin = async (userType: 'admin' | 'student') => {
+    console.log('🚀 Direct demo login for:', userType);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const demoEmail = userType === 'admin' ? 'admin@tastenotwaste.demo' : 'student@tastenotwaste.demo';
+      const user = await authService.login(demoEmail, 'demo2024');
+      
+      if (user) {
+        console.log('✅ Demo login successful');
+        onLogin(user);
+      } else {
+        console.log('❌ Demo login failed');
+        setError('Demo login failed. Please try again! 🔄');
+      }
+    } catch (err) {
+      console.error('❌ Demo login error:', err);
+      setError('Demo login error. Please try again! 🔄');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -174,9 +204,10 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             
             <div className="space-y-3">
               <button
-                onClick={() => useDemoCredentials('admin')}
-                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl hover:scale-105 transition-all border-3 border-purple-300 hover:border-purple-400 shadow-lg"
-                aria-label="Use admin demo credentials"
+                onClick={() => handleDemoLogin('admin')}
+                disabled={isLoading}
+                className="w-full text-left p-4 bg-gradient-to-r from-purple-200 to-pink-200 rounded-2xl hover:scale-105 transition-all border-3 border-purple-300 hover:border-purple-400 shadow-lg disabled:opacity-50"
+                aria-label="Login as admin demo user"
               >
                 <div className="flex items-center gap-4">
                   <div className="text-4xl">👩‍🏫</div>
@@ -190,9 +221,10 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
               </button>
               
               <button
-                onClick={() => useDemoCredentials('student')}
-                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl hover:scale-105 transition-all border-3 border-green-300 hover:border-green-400 shadow-lg"
-                aria-label="Use student demo credentials"
+                onClick={() => handleDemoLogin('student')}
+                disabled={isLoading}
+                className="w-full text-left p-4 bg-gradient-to-r from-green-200 to-blue-200 rounded-2xl hover:scale-105 transition-all border-3 border-green-300 hover:border-green-400 shadow-lg disabled:opacity-50"
+                aria-label="Login as student demo user"
               >
                 <div className="flex items-center gap-4">
                   <div className="text-4xl">🧒</div>
@@ -204,6 +236,22 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <div className="ml-auto text-2xl animate-pulse">🌟</div>
                 </div>
               </button>
+
+              {/* Alternative credential fill buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => useDemoCredentials('admin')}
+                  className="flex-1 p-2 bg-purple-100 text-purple-700 rounded-xl text-sm font-bold hover:bg-purple-200 transition-colors"
+                >
+                  Fill Admin Info
+                </button>
+                <button
+                  onClick={() => useDemoCredentials('student')}
+                  className="flex-1 p-2 bg-green-100 text-green-700 rounded-xl text-sm font-bold hover:bg-green-200 transition-colors"
+                >
+                  Fill Student Info
+                </button>
+              </div>
             </div>
             
             <div className="mt-4 p-3 bg-yellow-100 rounded-2xl border-2 border-yellow-300">
