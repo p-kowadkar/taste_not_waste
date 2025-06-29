@@ -68,12 +68,21 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           {/* Main logo and mascot */}
           <div className="text-center mb-8">
             <div className="relative inline-block">
-              {/* Main emoji character */}
+              {/* Main emoji character - Updated path for production */}
               <img 
-                src="/src/assets/image.png" 
+                src="/mascot.png" 
                 alt="Taste Not Waste Mascot" 
                 className="w-24 h-24 mx-auto mb-4 animate-bounce hover:scale-110 transition-transform cursor-pointer"
                 onClick={() => setShowWelcome(!showWelcome)}
+                onError={(e) => {
+                  // Fallback to emoji if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = document.createElement('div');
+                  fallback.className = 'w-24 h-24 mx-auto mb-4 animate-bounce hover:scale-110 transition-transform cursor-pointer text-6xl flex items-center justify-center';
+                  fallback.textContent = '😋';
+                  target.parentNode?.insertBefore(fallback, target);
+                }}
               />
               {/* Sparkle effects around the mascot */}
               <div className="absolute -top-2 -right-2 text-2xl animate-pulse">✨</div>
